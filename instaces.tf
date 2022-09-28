@@ -59,6 +59,7 @@ resource "aws_instance" "dove-inst" {
   availability_zone      = var.zone
   key_name               = "aws_key_pair.deployer.id"
   vpc_security_group_ids = [aws_security_group.webserver.id]
+  user_data = file("${path.module}/app1-install.sh")
   tags = {
     Name = "dove_instaces"
   }
